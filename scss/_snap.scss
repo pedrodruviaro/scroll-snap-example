@@ -1,0 +1,59 @@
+.media-scroller {
+    --spacer: 2rem;
+    --columns-size: 75%;
+
+    padding: var(--spacer) 0;
+
+    display: grid;
+    gap: var(--spacer);
+    grid-auto-flow: column;
+    grid-auto-columns: var(--columns-size);
+
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+
+    scroll-snap-type: inline mandatory;
+    scroll-padding-inline: var(--spacer, 1rem);
+
+    transition: all 0.5s;
+
+    user-select: none;
+    cursor: grab;
+
+    > * {
+        scroll-snap-align: start;
+    }
+
+    @media (min-width: 45em) {
+        --columns-size: 57%;
+    }
+
+    @media (min-width: 70em) {
+        --columns-size: 28%;
+    }
+
+    &.active {
+        background: #6161612c;
+        cursor: grabbing;
+        cursor: -webkit-grabbing;
+    }
+}
+
+/* Element */
+.element {
+    display: grid;
+    grid-template-rows: min-content;
+    background-color: #3a3a3a;
+    border-radius: 5px;
+    overflow: hidden;
+
+    > p {
+        padding: 1rem;
+    }
+
+    > img {
+        inline-size: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
+}
